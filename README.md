@@ -67,8 +67,7 @@
     3. 구매 제안이 확정될 경우, 대상 물품의 상태는 **판매 완료**가 된다.
     4. 구매 제안이 확정될 경우, 확정되지 않은 다른 구매 제안의 상태는 모두 **거절**이 된다.
 ## ERD 설계
-![스크린샷 2023-07-04 204745.png](..%2F..%2FPictures%2FScreenshots%2F%BD%BA%C5%A9%B8%B0%BC%A6%202023-07-04%20204745.png)![img.png](img.png)
-
+![img.png](img.png)
 ## 구현
 **Day 1**
 1. CREATE (@PostMapping)
