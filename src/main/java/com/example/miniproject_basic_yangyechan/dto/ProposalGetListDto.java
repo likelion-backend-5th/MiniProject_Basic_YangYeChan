@@ -12,7 +12,7 @@ public class ProposalGetListDto {
 
     public static ProposalGetListDto fromEntity2(NegotiationEntity entity) {
         ProposalGetListDto dto = new ProposalGetListDto();
-        dto.setId(entity.getItem_id());
+        dto.setId(entity.getItemid());
         dto.setSuggestedPrice(entity.getSuggestedPrice());
         dto.setStatus(entity.getStatus());
         return dto;

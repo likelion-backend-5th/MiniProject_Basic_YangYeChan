@@ -12,7 +12,7 @@ public class NegotiationEntity {
     private Long id;
 
     @Column(nullable = false)
-    private Long item_id;
+    private Long itemid;
 
     private Long suggestedPrice;
 

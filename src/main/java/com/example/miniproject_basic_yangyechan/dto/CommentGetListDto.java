@@ -11,7 +11,7 @@ public class CommentGetListDto {
 
     public static CommentGetListDto fromEntity2(CommentEntity entity) {
         CommentGetListDto dto = new CommentGetListDto();
-        dto.setId(entity.getItem_id());
+        dto.setId(entity.getItemid());
         dto.setContent(entity.getContent());
         dto.setReply(entity.getReply());
         return dto;

@@ -24,9 +24,12 @@ public class CommentService {
     private final ItemRepository repository2;
 
     // CREATE
-    public CommentDto createComment(CommentDto dto, Long item_id) {
+    public CommentDto createComment(CommentDto dto, Long itemid) {
+        if (!repository2.existsById(itemid))
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
         CommentEntity newItem = new CommentEntity();
-        newItem.setItem_id(item_id);
+        newItem.setItemid(itemid);
         newItem.setWriter(dto.getWriter());
         newItem.setPassword(dto.getPassword());
         newItem.setContent(dto.getContent());
@@ -78,15 +81,16 @@ public class CommentService {
     }
      */
 
-    public CommentDto updateComment(Long item_id, Long commentid, CommentDto dto) {
+    public CommentDto updateComment(Long itemid, Long commentid, CommentDto dto) {
         Optional<CommentEntity> optionalEntity2
                 = repository.findById(commentid);
         if (optionalEntity2.isPresent()) {
             CommentEntity item = optionalEntity2.get();
             if (item.getWriter().equals(dto.getWriter())
-                    && item.getPassword().equals(dto.getPassword())) {
+                    && item.getPassword().equals(dto.getPassword())
+                    && item.getItemid().equals(itemid)) {
                 CommentEntity targetEntity = optionalEntity2.get();
-                targetEntity.setItem_id(item_id);
+                targetEntity.setItemid(itemid);
                 targetEntity.setWriter(dto.getWriter());
                 targetEntity.setPassword(dto.getPassword());
                 targetEntity.setContent(dto.getContent());
@@ -107,9 +111,10 @@ public class CommentService {
         if (optionalEntity.isPresent()) {
             ItemEntity item2 = optionalEntity2.get();
             if (item2.getWriter().equals(dto.getWriter())
-                    && item2.getPassword().equals(dto.getPassword())) {
+                    && item2.getPassword().equals(dto.getPassword())
+                    && item2.getId().equals(item_id)) {
                 CommentEntity targetEntity = optionalEntity.get();
-                targetEntity.setItem_id(item_id);
+                targetEntity.setItemid(item_id);
                 targetEntity.setReply(dto.getReply());
                 return CommentDto.fromEntity(repository.save(targetEntity));
             } else {
@@ -126,7 +131,7 @@ public class CommentService {
 
             if (item.getWriter().equals(Dto.getWriter())
                     && item.getPassword().equals(Dto.getPassword())
-                    && item.getItem_id().equals(item_id)) {
+                    && item.getItemid().equals(item_id)) {
                 repository.deleteById(commentid);
             } else {
                 // 작성자와 비밀번호가 일치하지 않으면 예외 발생

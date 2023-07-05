@@ -12,7 +12,7 @@ public class CommentEntity {
     private Long id;
 
     @Column(nullable = false)
-    private Long item_id;
+    private Long itemid;
 
     @Column(nullable = false)
     private String writer;

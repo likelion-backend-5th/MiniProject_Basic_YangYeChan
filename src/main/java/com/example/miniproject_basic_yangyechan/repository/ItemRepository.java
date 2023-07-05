@@ -15,6 +15,5 @@ public interface ItemRepository extends JpaRepository<ItemEntity, Long> {
     List<ItemEntity> findTop20ByIdLessThanOrderByIdDesc(Long id);
 
     // 제목에 title이 들어가는 article 검사
-    Page<ItemEntity> findAllByTitleContains(
-            String title, Pageable pageable);
+    Page<ItemEntity> findAllByTitleContains(String title, Pageable pageable);
 }
