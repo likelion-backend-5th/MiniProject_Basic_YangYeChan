@@ -34,13 +34,11 @@ public class WebSecurityConfig {
                                 // requestMatchers == 어떤 URL로 오는 요청에 대하여 설정하는지
                                 // permitAll() == 누가 요청해도 허가한다.
                                 .requestMatchers(
-                                        "/no-auth",
                                         "/token/issue",
                                         "/users/login"
                                 )
                                 .permitAll()
                                 .requestMatchers(
-                                        "/re-auth",
                                         "/users/my-profile"
                                 )
                                 .authenticated()  // 인증이 된 사용자만 허가
